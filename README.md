@@ -1,2 +1,2 @@
 # EinNell
-Expound Hackathhon Project
+Expound Hackathon Project
