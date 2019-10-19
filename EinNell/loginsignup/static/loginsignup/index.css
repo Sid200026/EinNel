@@ -1,0 +1,292 @@
+.heading{
+    font-size: 45px;
+    color: aliceblue;
+}
+
+/* Navbar desktop
+-------------------------------------------------- */
+
+.st-navbar-desktop-wrapper {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    z-index: 1030;
+  }
+  .st-navbar-desktop-fixed {
+    position: fixed;
+    top: 0;
+  }
+  .st-navbar-desktop {
+    position: relative;
+    height: 80px;
+    z-index: auto;
+  }
+  .st-navbar-desktop:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  
+  /* Navbar desktop logo
+  -------------------------------------------------- */
+  
+  .st-navbar-desktop-logo {
+    float: left;
+    margin: 26px 0 0;
+  }
+  .st-navbar-desktop-logo-link > img {
+    width: 112px;
+    height: auto;
+  }
+  
+  
+  /* Navbar desktop menu
+  -------------------------------------------------- */
+  
+  .st-navbar-desktop-menu {
+    float: right;
+  }
+  
+  
+  /* Navbar desktop menu superfish settings
+  -------------------------------------------------- */
+  
+  .sf-menu, .sf-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sf-menu li {
+    position: relative;
+  }
+  .sf-menu ul {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+  }
+  .sf-menu > li {
+    float: left;
+  }
+  .sf-menu li:hover > ul,
+  .sf-menu li.sfHover > ul {
+    display: block;
+  }
+  .sf-menu a {
+    display: block;
+    position: relative;
+  }
+  .sf-menu ul ul {
+    top: 0;
+    left: 100%;
+  }
+  
+  
+  /* Navbar desktop menu superfish custom
+  -------------------------------------------------- */
+  
+  .sf-menu {
+    float: left;
+  }
+  .sf-menu ul {
+    min-width: 180px;
+  }
+  .sf-menu a {
+    padding: 28px 12px 29px 12px;
+    text-decoration: none;
+    zoom: 1;
+  }
+  .sf-menu li {
+    white-space: nowrap;
+    *white-space: normal;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+  }
+  .sf-menu ul a {
+    padding: 11px 12px 12px 12px;
+    font-size: 13px;
+  }
+  .sf-menu li:hover,
+  .sf-menu li.sfHover {
+    -webkit-transition: none;
+    transition: none;
+  }
+  /*** Align right ***/
+  .sf-menu li.dropdown-right ul {
+    left: auto;
+    right: 0;
+    min-width: 150px;
+  }
+  .sf-menu li.dropdown-right a {
+    text-align: right;
+    zoom: 1;
+  }
+  .sf-menu li.dropdown-right ul ul {
+    right: 100%;
+  }
+  
+  
+  /* Navbar desktop menu superfish arrows
+  -------------------------------------------------- */
+  
+  /*** Separacion chevron del texto en primer level ***/
+  .sf-arrows .sf-with-ul {
+    padding-right: 28px;
+  }
+  /*** Separacion chevron del texto en segundo level ***/
+  .sf-arrows ul .sf-with-ul {
+    padding-right: 38px;
+  }
+  /*** Separacion chevron del texto en segundo level dropdown right ***/
+  .sf-arrows li.dropdown-right ul .sf-with-ul {
+    padding-right: 12px;
+    padding-left: 38px;
+  }
+  /*** Generated arrows ***/
+  .sf-arrows .sf-with-ul:after {
+    content: '\f0d7';
+    font-family: 'FontAwesome';
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 5px;
+    height: 0;
+    width: 0;
+  }
+  .sf-arrows > li > .sf-with-ul:focus:after,
+  .sf-arrows > li:hover > .sf-with-ul:after,
+  .sf-arrows > .sfHover > .sf-with-ul:after {
+    content: '\f0d8';
+  }
+  /*** Generated second arrows ***/
+  .sf-arrows ul .sf-with-ul:after {
+    content: '\f0da';
+    margin-left: 5px;
+    right: 20px;
+  }
+  .sf-arrows ul li > .sf-with-ul:focus:after,
+  .sf-arrows ul li:hover > .sf-with-ul:after,
+  .sf-arrows ul .sfHover > .sf-with-ul:after {
+    content: '\f0d7';
+    right: 23px;
+  }
+  /*** Generated second right arrows ***/
+  .sf-arrows li.dropdown-right ul .sf-with-ul:after {
+    float: left;
+    content: '\f0d9';
+    margin-right: 30px;
+    left: 10px;
+  }
+  .sf-arrows li.dropdown-right ul li > .sf-with-ul:focus:after,
+  .sf-arrows li.dropdown-right ul li:hover > .sf-with-ul:after,
+  .sf-arrows li.dropdown-right ul .sfHover > .sf-with-ul:after {
+    content: '\f0d7';
+    left: 10px;
+  }
+  
+  
+  /* Navbar desktop menu superfish last item
+  -------------------------------------------------- */
+  .sf-menu > li.no-padding-right > a {
+    padding-right: 0px;
+  }
+  
+  
+  /* Navbar desktop all styles
+  -------------------------------------------------- */
+  
+  /*** Navbar desktop ***/
+  .st-navbar-desktop:before {
+    background-color: rgba(33,33,33,0.8);
+  }
+  /*** First level a ***/
+  .sf-menu a {
+    color: #ffffff;
+  }
+  .sf-menu a:hover,
+  .sf-menu a:focus {
+    color: #aaaaaa;
+  }
+  /*** Second level a ***/
+  .sf-menu ul a {
+    color: #cccccc;
+  }
+  .sf-menu ul a:hover,
+  .sf-menu ul a:focus {
+    color: #aaaaaa !important;
+  }
+  /*** Third level a ***/
+  .sf-menu ul ul a {
+    color: #cccccc;
+  }
+  .sf-menu ul ul a:hover,
+  .sf-menu ul ul a:focus {
+    color: #aaaaaa !important;
+  }
+  /*** First level li ***/
+  .sf-menu > li {
+    /*background: #BDD2FF;*/
+  }
+  .sf-menu > li:hover > a {
+    /*color: #676767;*/
+  }
+  /*** Second level li ***/
+  .sf-menu ul li {
+    background: #333333;
+  }
+  .sf-menu ul li:hover,
+  .sf-menu ul li.sfHover {
+    background: #3e3e3e;
+  }
+  /*** Third level li ***/
+  .sf-menu ul ul li {
+    background: #333333;
+  }
+  .sf-menu ul ul li:hover,
+  .sf-menu ul ul li.sfHover {
+    background: #3e3e3e;
+  }
+  /*** Levels li border top ***/
+  .sf-menu ul li {
+    border-top: 1px solid #494949;
+  }
+  .sf-menu ul ul li {
+    border-top: 1px solid #494949;
+  }
+  .sf-menu ul li:first-child {
+    border-top: 0;
+  }
+  
+  
+  /* Navbar desktop mas ajustes
+  -------------------------------------------------- */
+  
+  .sf-menu > li:last-child > a {
+    padding-right: 0;
+  }
+
+  .design{
+      background-color:#EA4C88;
+      margin-right: 19px;
+      margin-left: 19px;
+      font-size: 25px;
+      border-radius: 10px;
+      padding-left: 20px;
+      padding-right:20px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+  }
