@@ -37,17 +37,47 @@
 <body class="align">
 
 <div>
-    <h1>View Tasks</h1>
+    <h1>Rate Completed Tasks</h1>
 </div>
-<div>
-    <ol>
-        {% for i in tasks %}
-            <div class="headtask">
-                <li key={{i}} class="tasks">Task: {{ i.task }} Completed: {{i.completedDate}}  Rating:  {{i.rating}}/5</li>
-            </div>
-        {% endfor %}
-    </ol>
-</div>
+
+<div class="grid">
+    <form method="POST" class="form login"">
+        {% csrf_token %}
+          {% if error%}
+            <h2 class = "error">{{error}}</h2>
+          {% endif%}
+          
+          <div class="form__field">
+            <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
+        <input id="login__username" list = 'emailauth'  type="text" name="rating" class="form__input" placeholder="Enter the Rating" required>
+          <datalist id = emailauth>
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5"></option>
+          </datalist>
+        </div>
+
+
+        <div class="form__field">
+            <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
+        <input id="login__username" list = 'emailauth1'  type="text" name="task" class="form__input" placeholder="Enter the Task" required>
+          <datalist id = emailauth1>
+              {% for i in tasks %}
+                <option value="{{ i.task }}"></option>
+              {% endfor %}
+          </datalist>
+        </div>
+
+
+
+      <div class="form__field">
+        <input type="submit" value="Rate Task">
+      </div>
+
+    </form>
+  </div>
 
 
 </body>

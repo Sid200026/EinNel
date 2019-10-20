@@ -46,8 +46,8 @@
           
         <div class="form__field">
             <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
-        <input id="login__username" list = 'emailauth'  type="text" name="tasks" class="form__input" placeholder="Enter the Task" required>
-          <datalist id = emailauth>
+        <input id="login__username" list = 'emailauth2'  type="text" name="tasks" class="form__input" placeholder="Enter the Task" required>
+          <datalist id = emailauth2>
               {% for i in tasks %}
                 <option value="{{ i.task }}"></option>
               {% endfor %}

@@ -136,7 +136,7 @@ def alltasks(request):
     if request.user.is_staff:
         user = request.user
         auth = Authority.objects.get(authUser = user)
-        tasks = Task.objects.filter(auth = auth)
+        tasks = Task.objects.filter(auth = auth)[::-1]
         return render(request, 'loginsignup/viewalltasks.html' ,{'tasks':tasks})
     elif request.user.is_active :
         return render(request, 'loginsignup/dashboard_emp.html')
@@ -206,6 +206,29 @@ def review(request):
         auth = Authority.objects.get(authUser = user)
         emp = Employee.objects.filter(senior = auth)
         return render(request, 'loginsignup/review.html' , {'emp':emp})
+    elif request.user.is_active:
+        return render(request, 'loginsignup/dashboard_emp.html')
+    else:
+        return HttpResponseRedirect(reverse('loginsignup:login'))
+
+def rate(request):
+    if request.method == 'POST' and request.user.is_staff:
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        tasktext = request.POST.get('task')
+        task = Task.objects.get(task = tasktext)
+        rating = request.POST.get('rating')
+        task.rating = rating
+        task.save()
+        tasks = Task.objects.filter(auth = auth, completedDate = None, rating = None)
+        star = {1,2,3,4,5}
+        return render(request, 'loginsignup/rate.html' , {'tasks':tasks, 'star':star})
+    if request.user.is_staff:
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        tasks = Task.objects.filter(auth = auth, rating = None).exclude(completedDate=None)
+        star = {1,2,3,4,5}
+        return render(request, 'loginsignup/rate.html' , {'tasks':tasks, 'star':star})
     elif request.user.is_active:
         return render(request, 'loginsignup/dashboard_emp.html')
     else:

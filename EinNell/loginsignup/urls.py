@@ -16,4 +16,5 @@ urlpatterns = [
     path('promote/', views.promote, name="promote"),
     path('contact', views.contact, name = "contact"),
     path('review', views.review, name="review"),
+    path('rate', views.rate, name="rate"),
 ]

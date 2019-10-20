@@ -55,6 +55,7 @@ class Task(models.Model):
     task = models.CharField(max_length = 100, primary_key=True)
     lastDate = models.DateField()
     completedDate = models.DateField(blank = True, null = True)
+    rating = models.DecimalField(blank = True, null = True, decimal_places=1, max_digits=2)
 
     def __str__(self):
         return self.task

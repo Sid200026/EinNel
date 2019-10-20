@@ -20,6 +20,8 @@
                 <li><a href={% url 'loginsignup:dashboard'%}>Dashboard</a></li>
                 <li><a href={% url 'loginsignup:contact'%}>Contact Employees</a></li>
                 <li><a href={% url 'loginsignup:task'%}>Create Tasks</a></li>
+                <li><a href={% url 'loginsignup:alltasks' %}>All Tasks</a></li>
+                <li><a href={% url 'loginsignup:rate' %}>Rate Tasks</a></li>
                 <li><a href={% url 'loginsignup:review'%}>Review Employees</a></li>
                 <li><a href={% url 'loginsignup:promote' %}>Promote</a></li>
                 <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
@@ -53,8 +55,8 @@
 
       <div class="form__field">
             <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
-        <input id="login__username" list = 'emailauth'  type="text" name="employee" class="form__input" placeholder="Employee Designated" required>
-          <datalist id = emailauth>
+        <input id="login__username" list = 'emailauth6'  type="text" name="employee" class="form__input" placeholder="Employee Designated" required>
+          <datalist id = emailauth6>
               {% for i in emp %}
                 <option value="{{ i.empUser.username }}"></option>
               {% endfor %}
