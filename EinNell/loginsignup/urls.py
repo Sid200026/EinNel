@@ -12,4 +12,5 @@ urlpatterns = [
     path('update', views.update, name="update"),
     path('tasks', views.task, name="task"),
     path('complete',views.completetask, name="completetask"),
+    path('alltasks', views.alltasks, name="alltasks"),
 ]

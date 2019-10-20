@@ -34,20 +34,32 @@
 <body class="align">
 
 <div>
-    <h1>View Tasks Here</h1>
+    <h1>Select Completed Tasks</h1>
 </div>
-<div>
-    <ol>
-        {% for i in tasks %}
-            <div class="headtask">
-                <li key={{i}} class="tasks">Task: {{ i.task }}    Complete By:  {{i.lastDate}}</li>
-            </div>
-        {% endfor %}
-    </ol>
-</div>
-<div>
-        <button class="design" type="button" onclick={% url 'loginsignup:completetask'}>Complete Task</button>
-</div>
+
+<div class="grid">
+    <form method="POST" class="form login"">
+        {% csrf_token %}
+          {% if error%}
+            <h2 class = "error">{{error}}</h2>
+          {% endif%}
+          
+        <div class="form__field">
+            <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
+        <input id="login__username" list = 'emailauth'  type="text" name="tasks" class="form__input" placeholder="Enter the Employee Name" required>
+          <datalist id = emailauth>
+              {% for i in tasks %}
+                <option value="{{ i.task }}"></option>
+              {% endfor %}
+          </datalist>
+        </div>
+
+      <div class="form__field">
+        <input type="submit" value="Complete Tasks">
+      </div>
+
+    </form>
+  </div>
 
 
 </body>

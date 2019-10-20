@@ -80,8 +80,14 @@ def task(request):
             emp = request.POST.get('employee')
             user = User.objects.get(username = emp)
             employee = Employee.objects.get(empUser = user)
-            Task.objects.create(emp = employee, auth = auth, task = task,lastDate = lastdate)
-            return HttpResponseRedirect(reverse('loginsignup:dashboard'))
+            try:
+                Task.objects.create(emp = employee, auth = auth, task = task,lastDate = lastdate)
+                return HttpResponseRedirect(reverse('loginsignup:dashboard'))
+            except:
+                user = request.user
+                auth = Authority.objects.get(authUser = user)
+                emps = Employee.objects.filter(senior = auth)
+                return render(request, 'loginsignup/task_auth.html', {'emp':emps, 'error':"This task has already been created"})
         if request.user.is_active:
             return HttpResponseRedirect(reverse('loginsignup:completetask'))
     if request.user.is_staff:
@@ -92,15 +98,39 @@ def task(request):
     elif request.user.is_active :
         user = request.user
         emp = Employee.objects.get(empUser = user)
-        getTask = Task.objects.filter(emp = emp)
+        getTask = Task.objects.filter(emp = emp, completedDate=None)
         return render(request, 'loginsignup/task_emp.html', {'tasks':getTask})
     else:
         return HttpResponseRedirect(reverse('loginsignup:login'))
 
 def completetask(request):
+    if request.method == 'POST':
+        if request.user.is_active:
+            taskname = request.POST.get('tasks')
+            task = Task.objects.get(task = taskname)
+            task.completedDate = timezone.now()
+            task.save()
+            user = request.user
+            emp = Employee.objects.get(empUser = user)
+            getTask = Task.objects.filter(emp = emp, completedDate=None)
+            return render(request, 'loginsignup/complete.html', {'tasks':getTask})
     if request.user.is_staff:
         return render(request, 'loginsignup/dashboard_auth.html')
     elif request.user.is_active :
-        return render(request, 'loginsignup/complete.html')
+        user = request.user
+        emp = Employee.objects.get(empUser = user)
+        getTask = Task.objects.filter(emp = emp, completedDate=None)
+        return render(request, 'loginsignup/complete.html', {'tasks':getTask})
+    else:
+        return HttpResponseRedirect(reverse('loginsignup:login'))
+
+def alltasks(request):
+    if request.user.is_staff:
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        tasks = Task.objects.filter(auth = auth)
+        return render(request, 'loginsignup/viewalltasks.html' ,{'tasks':tasks})
+    elif request.user.is_active :
+        return render(request, 'loginsignup/dashboard_emp.html')
     else:
         return HttpResponseRedirect(reverse('loginsignup:login'))

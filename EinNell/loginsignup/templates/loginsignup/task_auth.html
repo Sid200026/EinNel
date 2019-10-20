@@ -19,6 +19,7 @@
               <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
                 <li><a href={% url 'loginsignup:dashboard'%}>Dashboard</a></li>
                 <li><a href="">View Profile</a></li>
+                <li><a href="{% url 'loginsignup:alltasks' %}">View All Tasks</a></li>
                 <li><a href="">Contact Employees</a></li>
                 <li><a href="">View Employees</a></li>
                 <li><a href="">Review Employees</a></li>
@@ -54,7 +55,7 @@
 
       <div class="form__field">
             <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
-        <input id="login__username" list = 'emailauth'  type="text" name="employee" class="form__input" placeholder="Enter the Employee Name" required>
+        <input id="login__username" list = 'emailauth'  type="text" name="employee" class="form__input" placeholder="Enter the Task" required>
           <datalist id = emailauth>
               {% for i in emp %}
                 <option value="{{ i.empUser.username }}"></option>

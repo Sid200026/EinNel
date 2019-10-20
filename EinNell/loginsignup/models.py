@@ -52,7 +52,7 @@ class Employee(models.Model):
 class Task(models.Model):
     emp = models.ForeignKey(Employee, on_delete=models.CASCADE, blank=True, null=True)
     auth = models.ForeignKey(Authority, on_delete=models.CASCADE, blank=True, null=True)
-    task = models.CharField(max_length = 100)
+    task = models.CharField(max_length = 100, primary_key=True)
     lastDate = models.DateField()
     completedDate = models.DateField(blank = True, null = True)
 

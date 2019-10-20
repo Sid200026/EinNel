@@ -5,6 +5,7 @@
   <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'loginsignup/login.css' %}">
     <link rel="stylesheet" href="{% static 'loginsignup/index.css' %}">
+    <link rel="stylesheet" href="{% static 'loginsignup/tasks.css' %}">
   <title>EinNel</title>
 
 </head>
@@ -34,7 +35,18 @@
 
 <body class="align">
 
-
+<div>
+    <h1>View Tasks</h1>
+</div>
+<div>
+    <ol>
+        {% for i in tasks %}
+            <div class="headtask">
+                <li key={{i}} class="tasks">Task: {{ i.task }} Completed: {{i.completedDate}}</li>
+            </div>
+        {% endfor %}
+    </ol>
+</div>
 
 
 </body>
