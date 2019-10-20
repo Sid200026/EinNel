@@ -34,16 +34,39 @@
 
 <body class="align">
 
-<h1>Welcome {{auth.authUser.username}}</h1>
-<h2 class = "elf">Employees Under You</h2>
-<ul>
-  {% for i in emp%}
-    <li class="tasks">{{i.empUser.username}}</li>
-  {% endfor %}
-</ul>
+<div>
+    <h1>Review Employee</h1>
+</div>
 
+<div class="grid">
+    <form method="POST" class="form login"">
+        {% csrf_token %}
+          {% if error%}
+            <h2 class = "error">{{error}}</h2>
+          {% endif%}
+          
+        <div class="form__field">
+            <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
+        <input id="login__username" list = 'emailauth'  type="text" name="emp" class="form__input" placeholder="Enter the Employee Name" required>
+          <datalist id = emailauth>
+              {% for i in emp %}
+                <option value="{{ i.empUser.username }}"></option>
+              {% endfor %}
+          </datalist>
+        </div>
 
+      <div class="form__field">
+        <input type="submit" value="Review Employee">
+      </div>
 
+    </form>
+  </div>
+
+{% if result %}
+    <div>
+        <h2 class="temp">{{result}}</h2>
+    </div>
+{% endif %}
 </body>
 
 </html>

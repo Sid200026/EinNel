@@ -14,4 +14,6 @@ urlpatterns = [
     path('complete',views.completetask, name="completetask"),
     path('alltasks', views.alltasks, name="alltasks"),
     path('promote/', views.promote, name="promote"),
+    path('contact', views.contact, name = "contact"),
+    path('review', views.review, name="review"),
 ]

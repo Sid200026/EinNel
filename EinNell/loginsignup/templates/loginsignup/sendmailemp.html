@@ -22,8 +22,8 @@
             <li><a href="{% url 'loginsignup:update' %}">View Profile</a></li>
             <li><a href="{% url 'loginsignup:task' %}">Pending Tasks</a></li>
             <li><a href={% url 'loginsignup:contact' %}>Contact Senior</a></li>
-            <li><a href={% url 'loginsignup:logout' %}>Logout</a></li> 
-            <li><a href=""></a></li>
+            <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
+            <li><a href=""></a></li>    
           </ul>
         </nav>
       </div>
@@ -34,21 +34,27 @@
 <body class="align">
 
 <div>
-    <h1>View Tasks</h1>
+    <h1>Select Mail To Senior</h1>
 </div>
-<div>
-    <ol>
-        {% for i in tasks %}
-            <div class="headtask">
-                <li key={{i}} class="tasks">Task: {{ i.task }}    Complete By:  {{i.lastDate}}</li>
-            </div>
-        {% endfor %}
-    </ol>
-</div>
-<form method="POST">
-    {% csrf_token %}
-    <input class="design" type="submit" value="Complete Task"></button>
-</form>
+
+<div class="grid">
+    <form method="POST" class="form login"">
+        {% csrf_token %}
+          {% if error%}
+            <h2 class = "error">{{error}}</h2>
+          {% endif%}
+          
+      <div class="form__field">
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <input id="login__username" type="text" name="email" class="form__input" placeholder="Email Body" required>
+      </div>
+
+      <div class="form__field">
+        <input type="submit" value="Send Mail">
+      </div>
+
+    </form>
+  </div>
 
 
 </body>

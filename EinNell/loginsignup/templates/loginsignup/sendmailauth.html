@@ -18,12 +18,13 @@
         </div>
         <nav class="st-navbar-desktop-menu" role="navigation">
           <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
-            <li><a href={% url 'loginsignup:dashboard' %}>Dashboard</a></li>
-            <li><a href="{% url 'loginsignup:update' %}">View Profile</a></li>
-            <li><a href="{% url 'loginsignup:task' %}">Pending Tasks</a></li>
-            <li><a href={% url 'loginsignup:contact' %}>Contact Senior</a></li>
-            <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
-            <li><a href=""></a></li>
+                <li><a href={% url 'loginsignup:dashboard'%}>Dashboard</a></li>
+                <li><a href={% url 'loginsignup:contact'%}>Contact Employees</a></li>
+                <li><a href={% url 'loginsignup:task'%}>Create Tasks</a></li>
+                <li><a href={% url 'loginsignup:review'%}>Review Employees</a></li>
+                <li><a href={% url 'loginsignup:promote' %}>Promote</a></li>
+                <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
+                <li><a href=""></a></li>
           </ul>
         </nav>
       </div>
@@ -34,7 +35,7 @@
 <body class="align">
 
 <div>
-    <h1>Select Completed Tasks</h1>
+    <h1>Select Mail To Senior</h1>
 </div>
 
 <div class="grid">
@@ -43,19 +44,24 @@
           {% if error%}
             <h2 class = "error">{{error}}</h2>
           {% endif%}
-          
+
+      <div class="form__field">
+        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
+        <input id="login__username" type="text" name="email" class="form__input" placeholder="Email Body" required>
+      </div>
+
         <div class="form__field">
             <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
-        <input id="login__username" list = 'emailauth'  type="text" name="tasks" class="form__input" placeholder="Enter the Task" required>
+        <input id="login__username" list = 'emailauth'  type="text" name="id" class="form__input" placeholder="Employee Name" required>
           <datalist id = emailauth>
-              {% for i in tasks %}
-                <option value="{{ i.task }}"></option>
+              {% for i in emp %}
+                <option value="{{ i.empUser.username }}"></option>
               {% endfor %}
           </datalist>
         </div>
 
       <div class="form__field">
-        <input type="submit" value="Complete Tasks">
+        <input type="submit" value="Send Mail">
       </div>
 
     </form>

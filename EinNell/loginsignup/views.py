@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Employee, Authority, Task
 from django.contrib.auth.models import User 
 from django.utils import timezone
+from django.core.mail import EmailMessage
 
 def assignEmployeeToAuthority():
     auth = Authority.objects.all().order_by('numberOfUsers')
@@ -55,9 +56,16 @@ def logoutEmp(request):
 
 def dashboard(request):
     if request.user.is_staff:
-        return render(request, 'loginsignup/dashboard_auth.html')
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        emp = Employee.objects.filter(senior = auth)
+        return render(request, 'loginsignup/dashboard_auth.html', {'auth':auth, 'emp':emp})
     elif request.user.is_active :
-        return render(request, 'loginsignup/dashboard_emp.html')
+        user = request.user
+        emp = Employee.objects.get(empUser = user)
+        tasks = Task.objects.filter(emp = emp, completedDate = None)
+        count = tasks.count()
+        return render(request, 'loginsignup/dashboard_emp.html', {'emp':emp, 'len':count})
     else:
         return HttpResponseRedirect(reverse('loginsignup:login'))
 
@@ -154,6 +162,51 @@ def promote(request):
         emp = Employee.objects.filter(senior = auth)
         return render(request, 'loginsignup/promote.html', {'emp':emp})
     elif request.user.is_active :
+        return render(request, 'loginsignup/dashboard_emp.html')
+    else:
+        return HttpResponseRedirect(reverse('loginsignup:login'))
+
+def contact(request):
+    if request.method == 'POST':
+        if request.user.is_staff:
+            name = request.user.username
+            textbody = request.POST.get('email')
+            empname = request.POST.get('id')
+            user = User.objects.get(username = empname)
+            employee = Employee.objects.get(empUser = user)
+            email = EmailMessage('Mail from {}'.format(name), textbody, to=[user.email])
+            email.send()
+            return HttpResponseRedirect(reverse('loginsignup:dashboard'))
+
+        else:
+            name = request.user.username
+            textbody = request.POST.get('email')
+            emp = Employee.objects.get(empUser = request.user)
+            email = EmailMessage('Mail from {}'.format(name), textbody, to=[emp.senior.authUser.email])
+            email.send()
+            return HttpResponseRedirect(reverse('loginsignup:dashboard'))
+    if request.user.is_staff:
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        emp = Employee.objects.filter(senior = auth)
+        return render(request, 'loginsignup/sendmailauth.html', {'emp':emp})
+    elif request.user.is_active :
+        return render(request, 'loginsignup/sendmailemp.html')
+    else:
+        return HttpResponseRedirect(reverse('loginsignup:login'))
+
+def review(request):
+    if request.method == 'POST' and request.user.is_staff:
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        emp = Employee.objects.filter(senior = auth)
+        return render(request, 'loginsignup/review.html' , {'emp':emp, 'result':'Good'})
+    if request.user.is_staff:
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        emp = Employee.objects.filter(senior = auth)
+        return render(request, 'loginsignup/review.html' , {'emp':emp})
+    elif request.user.is_active:
         return render(request, 'loginsignup/dashboard_emp.html')
     else:
         return HttpResponseRedirect(reverse('loginsignup:login'))
