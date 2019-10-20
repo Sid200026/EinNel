@@ -5,6 +5,7 @@
   <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'loginsignup/login.css' %}">
     <link rel="stylesheet" href="{% static 'loginsignup/index.css' %}">
+    <link rel="stylesheet" href="{% static 'loginsignup/tasks.css' %}">
   <title>EinNel</title>
 
 </head>
@@ -17,12 +18,12 @@
             </div>
             <nav class="st-navbar-desktop-menu" role="navigation">
               <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
+                <li><a href={% url 'loginsignup:dashboard' %}>Dashboard</a></li>
                 <li><a href="">View Profile</a></li>
                 <li><a href="">Contact Employees</a></li>
                 <li><a href={% url 'loginsignup:task'%}>Create Tasks</a></li>
                 <li><a href="">View Employees</a></li>
                 <li><a href="">Review Employees</a></li>
-                <li><a href={% url 'loginsignup:promote' %}>Promote</a></li>
                 <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
                 <li><a href=""></a></li>
               </ul>
@@ -34,7 +35,33 @@
 
 <body class="align">
 
+<div>
+    <h1>Promote Employee</h1>
+</div>
 
+<div class="grid">
+    <form method="POST" class="form login"">
+        {% csrf_token %}
+          {% if error%}
+            <h2 class = "error">{{error}}</h2>
+          {% endif%}
+          
+        <div class="form__field">
+            <label for="login__username"><ssvg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Firstname</span></label>
+        <input id="login__username" list = 'emailauth'  type="text" name="emp" class="form__input" placeholder="Enter the Employee Name" required>
+          <datalist id = emailauth>
+              {% for i in emp %}
+                <option value="{{ i.empUser.username }}"></option>
+              {% endfor %}
+          </datalist>
+        </div>
+
+      <div class="form__field">
+        <input type="submit" value="Promote Employee">
+      </div>
+
+    </form>
+  </div>
 
 
 </body>

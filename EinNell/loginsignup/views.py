@@ -134,3 +134,26 @@ def alltasks(request):
         return render(request, 'loginsignup/dashboard_emp.html')
     else:
         return HttpResponseRedirect(reverse('loginsignup:login'))
+
+def promote(request):
+    if request.method == 'POST':
+        if request.user.is_staff:
+            user = request.user
+            auth = Authority.objects.get(authUser = user)
+            emps = request.POST.get('emp')
+            empsuser = User.objects.get(username = emps)
+            emp = Employee.objects.get(empUser=empsuser )
+            empsuser.is_staff = True
+            empsuser.save()
+            Authority.objects.create(authUser=empsuser)
+            emp.delete()
+            return HttpResponseRedirect(reverse('loginsignup:dashboard'))
+    if request.user.is_staff:
+        user = request.user
+        auth = Authority.objects.get(authUser = user)
+        emp = Employee.objects.filter(senior = auth)
+        return render(request, 'loginsignup/promote.html', {'emp':emp})
+    elif request.user.is_active :
+        return render(request, 'loginsignup/dashboard_emp.html')
+    else:
+        return HttpResponseRedirect(reverse('loginsignup:login'))
