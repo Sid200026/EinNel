@@ -1,0 +1,55 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'loginsignup/login.css' %}">
+    <link rel="stylesheet" href="{% static 'loginsignup/index.css' %}">
+    <link rel="stylesheet" href="{% static 'loginsignup/tasks.css' %}">
+  <title>EinNel</title>
+
+</head>
+
+<div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
+    <div class="st-navbar-desktop">
+      <div class="container">
+        <div class="st-navbar-desktop-logo">
+          <a class="st-navbar-desktop-logo-link" title="Logo" href=""><img src="https://www.einnel.com/wp-content/uploads/2018/12/einnel-logo-137x54.png"></a>
+        </div>
+        <nav class="st-navbar-desktop-menu" role="navigation">
+          <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
+            <li><a href={% url 'loginsignup:dashboard' %}>Dashboard</a></li>
+            <li><a href="{% url 'loginsignup:update' %}">View Profile</a></li>
+            <li><a href="">Contact Senior</a></li>
+            <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
+            <li><a href=""></a></li>    
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+<body class="align">
+
+<div>
+    <h1>Select Completed Tasks</h1>
+</div>
+<div>
+    <ol>
+        {% for i in tasks %}
+            <div class="headtask">
+                <li key={{i}} class="tasks">Task: {{ i.task }}    Complete By:  {{i.lastDate}}</li>
+            </div>
+        {% endfor %}
+    </ol>
+</div>
+<form method="POST">
+    {% csrf_token %}
+    <input class="design" type="submit" value="Complete Task"></button>
+</form>
+
+
+</body>
+
+</html>

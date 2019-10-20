@@ -17,9 +17,9 @@
             </div>
             <nav class="st-navbar-desktop-menu" role="navigation">
               <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
-                <li><a href="">View Profile</a></li>
+                <li><a href="{% url 'loginsignup:update' %}">View Profile</a></li>
                 <li><a href="">Contact Senior</a></li>
-                <li><a href="">Pending Tasks</a></li>
+                <li><a href={% url 'loginsignup:task' %}>Pending Tasks</a></li>
                 <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
                 <li><a href=""></a></li>
               </ul>

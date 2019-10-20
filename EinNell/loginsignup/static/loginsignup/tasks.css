@@ -1,0 +1,15 @@
+.tasks{
+    color:white;
+    font-size: 21px;
+}
+h1{
+    font-size: 50px;
+}   
+.headtask{
+    display:flex;
+    justify-content: center;
+    margin:30px;
+}
+.design{
+    padding : 5px 5px;
+}

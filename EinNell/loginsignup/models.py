@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+class Authority(models.Model):
+    authUser = models.OneToOneField(User, on_delete=models.CASCADE)
+    numberOfUsers = models.IntegerField(blank = True, default = 0)
+
+    def __str__(self):
+        return self.authUser.username
+
 class Employee(models.Model):
     empUser = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField(blank = True, null = True)
@@ -37,6 +44,17 @@ class Employee(models.Model):
     yearsInCurrentRole = models.IntegerField(blank = True, null = True)
     lastprom = models.IntegerField(blank = True, null = True)
     curManager = models.IntegerField(blank = True, null = True)
+    senior = models.ForeignKey(Authority, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return self.user.username
+        return self.empUser.username
+
+class Task(models.Model):
+    emp = models.ForeignKey(Employee, on_delete=models.CASCADE, blank=True, null=True)
+    auth = models.ForeignKey(Authority, on_delete=models.CASCADE, blank=True, null=True)
+    task = models.CharField(max_length = 100)
+    lastDate = models.DateField()
+    completedDate = models.DateField(blank = True, null = True)
+
+    def __str__(self):
+        return self.task

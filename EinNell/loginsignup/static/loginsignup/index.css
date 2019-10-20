@@ -283,10 +283,10 @@
       background-color:#EA4C88;
       margin-right: 19px;
       margin-left: 19px;
-      font-size: 25px;
       border-radius: 10px;
-      padding-left: 20px;
-      padding-right:20px;
-      padding-bottom: 5px;
-      padding-top: 5px;
+      padding : 10px 40px;
+      color:white;
+      font-weight:300;
+      font-size: 20px;
+      width:200px;
   }
