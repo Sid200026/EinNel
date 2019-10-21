@@ -1,6 +1,32 @@
 # EinNel
 ## EXPOund Hackathon Project : An employee perfomance review system
 
+Clone this repository in a folder and change your directory to that folder
+
+### Pre-Requisites
+
+`pip install -r requirements.txt`
+
+Then we need to create the database for the project. To do that use
+
+`cd EinNell && python3 manage.py makemigrations`
+
+`python manage.py migrate`
+
+Now the final thing to do is create a superuser
+
+`python3 manage.py createsuperuser`
+
+On doing this you will be prompted through a series of steps
+On completion you will get a message 
+`Superuser created successfully.`
+
+Now we are done
+
+To run this on your local machine
+
+`python3 manage.py runserver`
+
 ### Features
 
 2 types of users are there
