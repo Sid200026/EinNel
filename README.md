@@ -1,36 +1,31 @@
-# EinNell
-### Expound Hackathon Project
+# EinNel
+## EXPOund Hackathon Project : An employee perfomance review system
 
-##### To-Do List
+### Features
 
-2 types of user
-1. Employee
-2. Authority
+2 types of users are there
+#### 1. Employee
+#### 2. Authority
 
-No sign up page for authorities
+Login Page for both employee and authorities, however signup page is only for employees
 
-Sign up for employee
+#### Employees
 
-But that won't activate the account
-
-Login page for both authority and employee
-
-###### Employees
-
-1. Can see their to do list of tasks
+1. Can see their to do list of tasks and complete them
 2. Can see their head details ( Name, phone, mail)
 3. Can send mail to superiors
-4. Can edit their personal details
-5. Cannot edit email, phone and name ( Requires authority to modify it )
+4. Can edit their personal details ( Only once )
+5. Can chat with their senior and other employees under that senior
 
-###### Authorities
+#### Authorities
 
 1. Can create and assign tasks to employees
-2. Can see their employee details
-3. Can see their personal details
-4. Modify employee details
-5. Promote employees based on recommendations
-6. Remove employee
+2. Rate Tasks
+3. Can see all the completed tasks
+4. Contact employees
+5. Promote employees to authority position
+6. Review employee perfomance
+7. Chat with their employees
 
 ### Team Members
 1. -[@ananya2407](https://github.com/ananya2407)
