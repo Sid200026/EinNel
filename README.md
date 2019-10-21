@@ -1,9 +1,15 @@
 # EinNel
-## EXPOund Hackathon Project : An employee perfomance review system
+## EXPOund Hackathon : An employee perfomance review system
 
 Clone this repository in a folder and change your directory to that folder
 
-### Pre-Requisites
+### Contribution
+
+All contributions to this repository are welcome. However all contributors must follow the CONTRIBUTING.md before submitting any pull requests.
+
+Also contributors must raise an issue before submitting a Pull Request
+
+### Requisites
 
 `pip install -r requirements.txt`
 
