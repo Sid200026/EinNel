@@ -3,68 +3,188 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-      <link rel="stylesheet" href="{% static 'loginsignup/index.css' %}">
-    <link rel="stylesheet" href="{% static 'loginsignup/login.css' %}">
+      <link rel="stylesheet" href="{% static 'loginsignup/update.css' %}">
   <title>EinNel</title>
 
 </head>
 
-<div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
-        <div class="st-navbar-desktop">
-          <div class="container">
-            <div class="st-navbar-desktop-logo">
-              <a class="st-navbar-desktop-logo-link" title="Logo" href=""><img src="https://www.einnel.com/wp-content/uploads/2018/12/einnel-logo-137x54.png"></a>
-            </div>
-            <nav class="st-navbar-desktop-menu" role="navigation">
-              <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
-            <li><a href={% url 'loginsignup:dashboard' %}>Dashboard</a></li>
-            <li><a href="{% url 'loginsignup:update' %}">View Profile</a></li>
-            <li><a href="{% url 'loginsignup:task' %}">Pending Tasks</a></li>
-            <li><a href={% url 'loginsignup:contact' %}>Contact Senior</a></li>
-            <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
-            <li><a href=""></a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
+<body>
+<div class="container">
+  <form method="POST">
+  {% csrf_token %}
+    <label for="fname">Age</label>
+    <input required type="text" id="fname" name="age" placeholder="Your Age..">
+
+    <label for="country">Attrition</label>
+    <select required id="country" name="attrition">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+
+    <label for="travel">Travel</label>
+    <select required id="travel" name="travel">
+      <option value="2">Travel Frequently</option>
+      <option value="1">Travel Rarely</option>
+      <option value="0">No Travel</option>
+    </select>
+
+    <label for="fname">DR</label>
+    <input required type="text" id="fname" name="dr" placeholder="Your DR..">
+
+    <label for="department">Department</label>
+    <select required id="department" name="department">
+      <option value="2">Sales</option>
+      <option value="1">Research and Development</option>
+      <option value="0">Human Resources</option>
+    </select>
+
+    <label for="fname">Distance</label>
+    <input required type="text" id="fname" name="distance" placeholder="Distance from home..">
+
+    <label for="ed">ED</label>
+    <select required id="ed" name="ed">
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </select>
+
+    <label for="education">Education</label>
+    <select required id="education" name="education">
+      <option value="5">Human Resources</option>
+      <option value="4">Technical Degree</option>
+      <option value="3">Medical</option>
+      <option value="2">Marketing</option>
+      <option value="1">Life Sciences</option>
+      <option value="0">Other</option>
+    </select>
+
+    <label for="esatisfaction">Environment Satisfaction</label>
+    <select required id="esatisfaction" name="esatisfaction">
+      <option value="4">Highly Satisfied</option>
+      <option value="3">Moderately Satisfied</option>
+      <option value="2">Satisfied</option>
+      <option value="1">Unsatisfied</option>
+    </select>
+
+    <label for="gender">Gender</label>
+    <select required id="gender" name="gender">
+      <option value="1">Male</option>
+      <option value="0">Female</option>
+    </select>
+
+    <label for="fname">Hourly Rate</label>
+    <input required type="text" id="fname" name="hourlyrate" placeholder="Your Hourly Rate..">
+
+    <label for="involvment">Involvment</label>
+    <select required id="involvment" name="involvment">
+      <option value="4">Highly Involved</option>
+      <option value="3">Moderately Involved</option>
+      <option value="2">Barely Involved</option>
+      <option value="1">Not involved</option>
+    </select>
+
+    <label for="joblevel">Job Level</label>
+    <select required id="joblevel" name="joblevel">
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </select>
+
+    <label for="role">Role</label>
+    <select required id="role" name="role">
+      <option value="8">Research Director</option>
+      <option value="7">Manufacturing Director</option>
+      <option value="6">Research Scientist</option>
+      <option value="5">Human Resources</option>
+      <option value="4">Sales Executive</option>
+      <option value="3">Manager</option>
+      <option value="2">Sales Representative</option>
+      <option value="1">Healthcare Representative</option>
+      <option value="0">Laboratory Technician</option>
+    </select>
+
+    <label for="satisfaction">Satisfaction</label>
+    <select required id="satisfaction" name="satisfaction">
+      <option value="4">Highly Satisfied</option>
+      <option value="3">Moderately Satisfied</option>
+      <option value="2">Satisfied</option>
+      <option value="1">Unsatisfied</option>
+    </select>
+
+    <label for="maritalstatus">Marital Status</label>
+    <select required id="maritalstatus" name="maritalstatus">
+      <option value="2">Married</option>
+      <option value="1">Single</option>
+      <option value="3">Divorced</option>
+    </select>
+
+    <label for="fname">Income</label>
+    <input required type="text" id="fname" name="income" placeholder="Your Income..">
+
+    <label for="fname">Monthly rate</label>
+    <input required type="text" id="fname" name="monthlyrate" placeholder="Your Monthly Rate..">    
+
+    <label for="fname">Number of Companies Worked Before</label>
+    <input required type="text" id="fname" name="prevCompanies" placeholder="Number of Previous Companies..">   
+
+    <label for="overtime">Overtime</label>
+    <select required id="overtime" name="overtime">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+
+    <label for="salary">Salary Hike</label>
+    <input required type="text" id="fname" name="salary" placeholder="Your Salary Hike..">
+
+    <label for="rsatisfaction">Relationship Satisfaction</label>
+    <select required id="rsatisfaction" name="rsatisfaction">
+      <option value="4">Highly Satisfied</option>
+      <option value="3">Moderately Satisfied</option>
+      <option value="2">Satisfied</option>
+      <option value="1">Unsatisfied</option>
+    </select>
+
+    <label for="stock">Stock Option Level</label>
+    <select required id="stock" name="stock">
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+      <option value="0">0</option>
+    </select>
+
+    <label for="working">Total Working Years</label>
+    <input required type="text" id="working" name="working" placeholder="Your Total Working Years..">
+
+    <label for="lastTrainingTime">Training Times Last Year</label>
+    <input required type="text" id="lastTrainingTime" name="lastTrainingTime" placeholder="Training Times Last Year..">
+
+    <label for="worklife">Work Life Balance</label>
+    <select required id="worklife" name="worklife">
+      <option value="4">Excellent</option>
+      <option value="3">Good</option>
+      <option value="2">Bad</option>
+      <option value="1">Very Bad</option>
+    </select>
+
+    <label for="yearsAtComp">Years At Company</label>
+    <input required type="text" id="yearsAtComp" name="yearsAtComp" placeholder="Years at Company..">
+
+    <label for="yearsAtCur">Years In Current Role</label>
+    <input required type="text" id="yearsAtCur" name="yearsAtCur" placeholder="Years in Current Role..">
+
+    <label for="lastprom">Years In Since Last Promotion</label>
+    <input required type="text" id="lastprom" name="lastprom" placeholder="Years since Last Promotion..">
+
+    <label for="curManager">Years with Current Manager</label>
+    <input required type="text" id="curManager" name="curManager" placeholder="Years with Current Manager..">
 
 
+    <input type="submit" value="Submit">
 
-
-<body class="align">
-
-  <div class="grid">
-    <form method="POST" class="form login" action = {% url 'loginsignup:dashboard'%}>
-        {% csrf_token %}
-          {% if error%}
-            <h2 class = "error">{{error}}</h2>
-          {% endif%}
-      <div class="form__field">
-        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-        <input id="login__username" readonly value = "Username: {{user.empUser.username}}" type="text" name="username" class="form__input" placeholder="Username" required>
-      </div>
-
-      <div class="form__field">
-        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-        <input id="login__username" readonly value = "Email: {{user.empUser.email}}"  type="text" name="email" class="form__input" placeholder="Email-ID" required>
-      </div>
-
-      <div class="form__field">
-        <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-        <input id="login__username" type="text" name="age" class="form__input" placeholder="Age" required>
-      </div>
-      
-
-      <div class="form__field">
-        <input type="submit" value="Update Details">
-      </div>
-
-    </form>
-
-  </div>
-
-  <svg xmlns="http://www.w3.org/2000/svg" class="icons"><symbol id="arrow-right" viewBox="0 0 1792 1792"><path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z"/></symbol><symbol id="lock" viewBox="0 0 1792 1792"><path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z"/></symbol><symbol id="user" viewBox="0 0 1792 1792"><path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z"/></symbol></svg>
+  </form>
+</div>
 
 </body>
 

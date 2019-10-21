@@ -70,12 +70,53 @@ def dashboard(request):
         return HttpResponseRedirect(reverse('loginsignup:login'))
 
 def update(request):
+    if request.method == 'POST':
+        user = request.user
+        emp = Employee.objects.get(empUser = user)
+        emp.age = int(request.POST.get('age'))
+        emp.travel = int(request.POST.get('travel'))
+        emp.attrition = int(request.POST.get('attrition'))
+        emp.dr = int(request.POST.get('dr'))
+        emp.department = int(request.POST.get('department'))
+        emp.distance = int(request.POST.get('distance'))
+        emp.ed = int(request.POST.get('ed'))
+        emp.education = int(request.POST.get('education'))
+        emp.envsatisfaction = int(request.POST.get('esatisfaction'))
+        emp.gender = int(request.POST.get('gender'))
+        emp.hourlyRate = int(request.POST.get('hourlyrate'))
+        emp.involvment = int(request.POST.get('involvment'))
+        emp.joblevel = int(request.POST.get('joblevel'))
+        emp.role = int(request.POST.get('role'))
+        emp.satisfaction = int(request.POST.get('satisfaction'))
+        emp.marital_status = int(request.POST.get('maritalstatus'))
+        emp.income = int(request.POST.get('income'))
+        emp.monthly_rate = int(request.POST.get('monthlyrate'))
+        emp.prevCompanies = int(request.POST.get('prevCompanies'))
+        if int(request.POST.get('age'))>18:
+            emp.overage = 1
+        else:
+            emp.overage = 0
+        emp.overtime = int(request.POST.get('overtime'))
+        emp.salaryHike = int(request.POST.get('salary'))
+        emp.relsatisfaction = int(request.POST.get('rsatisfaction'))
+        emp.stock = int(request.POST.get('stock'))
+        emp.workingYears = int(request.POST.get('working'))
+        emp.lastTrainingTime = int(request.POST.get('lastTrainingTime'))
+        emp.workLifeBalance = int(request.POST.get('worklife'))
+        emp.yearsAtCompany = int(request.POST.get('yearsAtComp'))
+        emp.yearsInCurrentRole = int(request.POST.get('yearsAtCur'))
+        emp.lastprom = int(request.POST.get('lastprom'))
+        emp.curManager = int(request.POST.get('curManager'))
+        emp.save()
+        return HttpResponseRedirect(reverse('loginsignup:dashboard'))
     if request.user.is_staff:
         return render(request, 'loginsignup/dashboard_auth.html')
     elif request.user.is_active :
         user = request.user
         emp = Employee.objects.get(empUser = user)
-        return render(request, 'loginsignup/updateEmployee.html', {'user':emp})
+        if emp.age != None:
+            return render(request, 'loginsignup/askhr.html')
+        return render(request, 'loginsignup/updateEmployee.html')
     else:
         return HttpResponseRedirect(reverse('loginsignup:login'))
 
