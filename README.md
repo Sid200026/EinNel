@@ -1,4 +1,3 @@
-# EinNel
 ## EXPOund Hackathon : An employee perfomance review system
 
 Clone this repository in a folder and change your directory to that folder
