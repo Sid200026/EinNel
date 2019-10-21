@@ -66,7 +66,10 @@
 
 {% if result %}
     <div>
-        <h2 class="temp">{{result}}</h2>
+        <h2 class="temp">Review of {{name}} : {{result.result}}</h2>
+    </div>
+    <div>
+        <h3>Accuracy of Model: {{result.accuracy}}%</h3> 
     </div>
 {% endif %}
 </body>

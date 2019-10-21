@@ -8,6 +8,7 @@ from .models import Employee, Authority, Task
 from django.contrib.auth.models import User 
 from django.utils import timezone
 from django.core.mail import EmailMessage
+from .predictionModel import predictModel
 
 def assignEmployeeToAuthority():
     auth = Authority.objects.all().order_by('numberOfUsers')
@@ -240,8 +241,30 @@ def review(request):
     if request.method == 'POST' and request.user.is_staff:
         user = request.user
         auth = Authority.objects.get(authUser = user)
-        emp = Employee.objects.filter(senior = auth)
-        return render(request, 'loginsignup/review.html' , {'emp':emp, 'result':'Good'})
+        empuser = request.POST.get('emp')
+        usr = User.objects.get(username = empuser)
+        emp = Employee.objects.get(empUser = usr)
+        employee = Employee.objects.filter(senior = auth)
+        arr = [emp.age,emp.attrition,emp.travel,emp.dr,emp.department,emp.distance,emp.ed,emp.education,
+                1,emp.envsatisfaction,emp.gender,emp.hourlyRate,emp.involvment,emp.joblevel,emp.role,
+                emp.satisfaction, emp.marital_status,emp.income,emp.monthly_rate,emp.prevCompanies,
+                emp.overage,emp.overtime,emp.salaryHike,emp.relsatisfaction,80,emp.stock,emp.workingYears,
+                emp.lastTrainingTime,emp.workLifeBalance,emp.yearsAtCompany,emp.yearsInCurrentRole,
+                emp.lastprom,emp.curManager
+        ]
+        res = predictModel(arr)
+        res['accuracy'] = round(res['accuracy']*100,2)
+        if(res['result'] == [5]):
+            res['result'] = "Excellent"
+        elif(res['result'] == [4]):
+            res['result'] = "Very Good"
+        elif(res['result'] == [3]):
+            res['result'] = "Good"
+        elif(res['result'] == [2]):
+            res['result'] = "Poor"
+        elif(res.result == [1]):
+            res['result'] = "Worst"
+        return render(request, 'loginsignup/review.html' , {'emp':employee, 'result':res, 'name':empuser})
     if request.user.is_staff:
         user = request.user
         auth = Authority.objects.get(authUser = user)
