@@ -1,0 +1,52 @@
+.message{
+    margin-top: 90px;
+    padding-left:270px; 
+    padding-right: 235px;
+    width: 100%; 
+    height: 70%; 
+    overflow: scroll;
+    overflow-x: hidden; 
+    overflow-x: auto; 
+    text-align:justify;
+}
+*{
+    overflow: hidden;
+}
+.fullme{
+    width: 90%; 
+    padding:10px;
+    border-radius: 25px;   
+}
+.send{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    padding-left:200px; 
+    padding-right:200px;
+}
+.hilo{
+    margin-left: 50px;
+    padding: 10px;
+    color:black;
+    background-color: greenyellow;
+    font-weight: 200;
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.textme {
+    font-size: 20px;
+    text-align: right;
+    color:green;
+    font-weight: 100;
+}
+.textother{
+    font-size: 20px;
+    text-align: start;
+    color:white;
+    font-weight: 100;
+    display: inline-block;
+}
+.greyme{
+    color:red;  
+}

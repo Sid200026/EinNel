@@ -25,6 +25,7 @@
                 <li><a href={% url 'loginsignup:rate' %}>Rate Tasks</a></li>
                 <li><a href={% url 'loginsignup:review'%}>Review Employees</a></li>
                 <li><a href={% url 'loginsignup:promote' %}>Promote</a></li>
+                <li><a href={% url 'loginsignup:chat' %}>Chat</a></li>
                 <li><a href={% url 'loginsignup:logout' %}>Logout</a></li>
                 <li><a href=""></a></li>
               </ul>
@@ -71,6 +72,11 @@
     <div>
         <h3>Accuracy of Model: {{result.accuracy}}%</h3> 
     </div>
+{% endif %}
+{% if err %}
+  <div>
+    <h2 class="temp">{{err}}</h2>
+  </div>
 {% endif %}
 </body>
 

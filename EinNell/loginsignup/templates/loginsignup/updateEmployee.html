@@ -10,6 +10,22 @@
 
 <body>
 <div class="container">
+<div class="iam">
+  <div>
+    <a href={% url 'loginsignup:dashboard'%}> <button class="design" type = "button">Dashboard</button></a>
+  </div>
+  <div class="centreme">
+    <h1> Update Personal Details </h1>
+  </div>
+  <div class="centreme">
+    <h3> Note : This is a one time form, any subsequent changes can only be done by the HR </h3>
+  </div>
+  <div class="centreme">
+    {% if error %}
+      <h2 class="danger">{{error}}</h2>
+    {% endif %}
+  </div>
+</div>
   <form method="POST">
   {% csrf_token %}
     <label for="fname">Age</label>
