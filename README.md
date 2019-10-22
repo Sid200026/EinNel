@@ -1,4 +1,3 @@
-# EinNel
 ## EXPOund Hackathon : An employee perfomance review system
 
 Clone this repository in a folder and change your directory to that folder
@@ -17,7 +16,7 @@ Then we need to create the database for the project. To do that use
 
 `cd EinNell && python3 manage.py makemigrations`
 
-`python manage.py migrate`
+`python3 manage.py migrate`
 
 Now the final thing to do is create a superuser
 
