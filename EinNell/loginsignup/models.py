@@ -33,7 +33,7 @@ class Employee(models.Model):
     overage = models.IntegerField(blank = True, null = True, default = 1)
     overtime = models.IntegerField(blank = True, null = True) #True means Yes False means No
     salaryHike = models.IntegerField(blank = True, null = True)
-    rating = models.IntegerField(blank = True, null = True)
+    rating = models.CharField(blank = True, null = True, max_length = 50)
     relsatisfaction = models.IntegerField(blank = True, null = True)
     # Standard hours is always 80
     stock = models.IntegerField(blank = True, null = True)

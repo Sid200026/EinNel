@@ -37,8 +37,9 @@
 .textme {
     font-size: 20px;
     text-align: right;
-    color:green;
+    color:turquoise;
     font-weight: 100;
+    margin:5px; 
 }
 .textother{
     font-size: 20px;
@@ -46,7 +47,11 @@
     color:white;
     font-weight: 100;
     display: inline-block;
+    margin:5px;
 }
 .greyme{
     color:red;  
+}
+.actual{
+    padding:1px;    
 }

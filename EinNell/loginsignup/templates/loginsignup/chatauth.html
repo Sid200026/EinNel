@@ -38,11 +38,11 @@
 <div class="message">
 {% for messages in chat %}
     {% if messages.writer.username == usr%}
-      <div>
+      <div class="actual">
         <p class="textme">{{messages.content}}</p>
       </div>
     {% else %}
-      <div>
+      <div class="actual">
         <p class="textother greyme">{{messages.writer.username}}</p>
         <p class="textother">:  {{messages.content}}</p>
       </div>

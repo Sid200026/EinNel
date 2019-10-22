@@ -20,7 +20,7 @@ def predictModel(arr):
     X_train = sc.fit_transform(X_train)
     X_test = sc.transform(X_test)
     row=sc.transform(empdata.reshape(1,-1))
-    logisticregression = LogisticRegression(solver='liblinear', multi_class='ovr')
+    logisticregression = LogisticRegression(solver='lbfgs', multi_class='multinomial')
     logisticregression.fit(X_train, y_train)
     y_pred = logisticregression.predict(X_test)
     y_pred1= logisticregression.predict(row)

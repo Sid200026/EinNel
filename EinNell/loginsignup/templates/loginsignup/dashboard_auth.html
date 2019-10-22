@@ -40,7 +40,7 @@
 <h2 class = "elf">Employees Under You</h2>
 <ul>
   {% for i in emp%}
-    <li class="tasks">{{i.empUser.username}}</li>
+    <li class="tasks mess">{{i.empUser.username}} <br/> Rating: {{i.rating}}</li>
   {% endfor %}
 </ul>
 

@@ -296,6 +296,8 @@ def review(request):
                 res['result'] = "Poor"
             elif(res.result == [1]):
                 res['result'] = "Worst"
+            emp.rating = res['result']
+            emp.save()
             return render(request, 'loginsignup/review.html' , {'emp':employee, 'result':res, 'name':empuser})
         except:
             user = request.user
