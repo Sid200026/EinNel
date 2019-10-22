@@ -41,7 +41,7 @@
     <ol>
         {% for i in tasks %}
             <div class="headtask">
-                <li key={{i}} class="tasks">Task: {{ i.task }}    Complete By:  {{i.lastDate}}</li>
+                <li key={{i}} class="tasks">Task: {{ i.task }}<br/>Complete By:  {{i.lastDate}}</li>
             </div>
         {% endfor %}
     </ol>

@@ -44,7 +44,7 @@
     <ol>
         {% for i in tasks %}
             <div class="headtask">
-                <li key={{i}} class="tasks">Task: {{ i.task }} Completed: {{i.completedDate}}  Rating:  {{i.rating}}/5</li>
+                <li key={{i}} class="tasks">Task: {{ i.task }}<br/>Assigned To: {{i.emp.empUser.username}}<br/>Completed Date: {{i.completedDate}}<br/>Rating:  {{i.rating}}/5</li>
             </div>
         {% endfor %}
     </ol>
