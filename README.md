@@ -1,5 +1,8 @@
 ## EXPOund Hackathon : An employee perfomance review system
 
+
+![](EinNell.jpg)
+
 Clone this repository in a folder and change your directory to that folder
 
 ### Contribution
